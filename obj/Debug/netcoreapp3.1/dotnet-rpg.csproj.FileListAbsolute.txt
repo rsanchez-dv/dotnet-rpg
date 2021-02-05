@@ -1,0 +1,17 @@
+/Users/rsanchez/GitHub/dotnet-rpg/bin/Debug/netcoreapp3.1/appsettings.Development.json
+/Users/rsanchez/GitHub/dotnet-rpg/bin/Debug/netcoreapp3.1/appsettings.json
+/Users/rsanchez/GitHub/dotnet-rpg/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
+/Users/rsanchez/GitHub/dotnet-rpg/bin/Debug/netcoreapp3.1/dotnet-rpg.deps.json
+/Users/rsanchez/GitHub/dotnet-rpg/bin/Debug/netcoreapp3.1/dotnet-rpg.runtimeconfig.json
+/Users/rsanchez/GitHub/dotnet-rpg/bin/Debug/netcoreapp3.1/dotnet-rpg.runtimeconfig.dev.json
+/Users/rsanchez/GitHub/dotnet-rpg/bin/Debug/netcoreapp3.1/dotnet-rpg.dll
+/Users/rsanchez/GitHub/dotnet-rpg/bin/Debug/netcoreapp3.1/dotnet-rpg.pdb
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/dotnet-rpg.csprojAssemblyReference.cache
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/dotnet-rpg.MvcApplicationPartsAssemblyInfo.cache
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/dotnet-rpg.AssemblyInfoInputs.cache
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/dotnet-rpg.AssemblyInfo.cs
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/dotnet-rpg.RazorTargetAssemblyInfo.cache
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/staticwebassets/dotnet-rpg.StaticWebAssets.Manifest.cache
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/staticwebassets/dotnet-rpg.StaticWebAssets.xml
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/dotnet-rpg.dll
+/Users/rsanchez/GitHub/dotnet-rpg/obj/Debug/netcoreapp3.1/dotnet-rpg.pdb
