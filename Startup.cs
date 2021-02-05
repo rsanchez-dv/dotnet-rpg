@@ -40,7 +40,7 @@ namespace dotnet_rpg
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
