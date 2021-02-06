@@ -350,3 +350,14 @@ MigrationBackup/
 .ionide/
 bin/Debug/netcoreapp3.1/dotnet-rpg.dll
 bin/Debug/netcoreapp3.1/dotnet-rpg.pdb
+bin/Debug/netcoreapp3.1/dotnet-rpg.deps.json
+bin/Debug/netcoreapp3.1/dotnet-rpg.dll
+bin/Debug/netcoreapp3.1/dotnet-rpg.pdb
+obj/dotnet-rpg.csproj.nuget.cache
+obj/dotnet-rpg.csproj.nuget.dgspec.json
+obj/project.assets.json
+obj/Debug/netcoreapp3.1/dotnet-rpg.assets.cache
+obj/Debug/netcoreapp3.1/dotnet-rpg.csproj.FileListAbsolute.txt
+obj/Debug/netcoreapp3.1/dotnet-rpg.csprojAssemblyReference.cache
+obj/Debug/netcoreapp3.1/dotnet-rpg.dll
+obj/Debug/netcoreapp3.1/dotnet-rpg.pdb
