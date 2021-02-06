@@ -27,6 +27,8 @@ namespace dotnet_rpg
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //Adding new package
+            services.AddAutoMapper(typeof(Startup));
             // WebApi wants to inject the ICharServices but doesn't know which one to use
             // If we need to make any changes to the and use another implementaion class we just have to change this.
             // AddScoped makes a copy per request
