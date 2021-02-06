@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,6 +34,29 @@ namespace dotnet_rpg.Services.CharacterService
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id)
+        {
+            // Create serviceResponse
+            ServiceResponse<List<GetCharacterDto>> serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
+            try
+            {
+                // Find the existing character within "characters" array. Pull out into character
+                Character character = characters.First(x => x.Id == id);
+                characters.Remove(character);
+                // Set the service Response with new character
+                serviceResponse.Data = (characters.Select(x=>_mapper.Map<GetCharacterDto>(x))).ToList();
+    
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                
+            }
+            
+            return serviceResponse;
+        }
+
         public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
         {
             ServiceResponse<List<GetCharacterDto>> serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
@@ -51,21 +75,29 @@ namespace dotnet_rpg.Services.CharacterService
         {
             // Create serviceResponse
             ServiceResponse<GetCharacterDto> serviceResponse = new ServiceResponse<GetCharacterDto>();
-            // Find the existing character within "characters" array. Pull out into character
-            Character character = characters.FirstOrDefault(x => x.Id == updatedCharacter.Id);
-            // Copy over all data into new character
-            character.Name = updatedCharacter.Name;
-            character.Class = updatedCharacter.Class;
-            character.Defense = updatedCharacter.Defense;
-            character.HitPoints = updatedCharacter.HitPoints;
-            character.Intelligence = updatedCharacter.Intelligence;
-            character.Strength = updatedCharacter.Strength;
-            // Set the service Response with new character
-            serviceResponse.Data = _mapper.Map<GetCharacterDto>(character);
-
+            try
+            {
+                // Find the existing character within "characters" array. Pull out into character
+                Character character = characters.FirstOrDefault(x => x.Id == updatedCharacter.Id);
+                // Copy over all data into new character
+                character.Name = updatedCharacter.Name;
+                character.Class = updatedCharacter.Class;
+                character.Defense = updatedCharacter.Defense;
+                character.HitPoints = updatedCharacter.HitPoints;
+                character.Intelligence = updatedCharacter.Intelligence;
+                character.Strength = updatedCharacter.Strength;
+                // Set the service Response with new character
+                serviceResponse.Data = _mapper.Map<GetCharacterDto>(character);
+    
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                
+            }
+            
             return serviceResponse;
-
-
         }
     }
 }
