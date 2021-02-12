@@ -37,6 +37,7 @@ namespace dotnet_rpg
             // AddScoped makes a copy per request
             // DO MORE RESEARCH
             services.AddScoped<ICharacterService, CharacterService>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
