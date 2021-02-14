@@ -1,6 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using dotnet_rpg.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace dotnet_rpg.Data
 {
@@ -8,8 +15,11 @@ namespace dotnet_rpg.Data
     public class AuthRepository : IAuthRepository
     {
         private readonly DataContext _context;
-        public AuthRepository(DataContext context)
+        private readonly IConfiguration _configuration;
+
+        public AuthRepository(DataContext context, IConfiguration configuration)
         {
+            _configuration = configuration;
             _context = context;
         }
         public async Task<ServiceResponse<string>> Login(string username, string password)
@@ -23,8 +33,7 @@ namespace dotnet_rpg.Data
                 response.Success = false;
                 response.Message = "Wrong Password";
             }else{
-                response.Data = user.Id.ToString();
-
+                response.Data = CreateToken(user);
             }
             return response;
         }
@@ -73,6 +82,34 @@ namespace dotnet_rpg.Data
                 return true;
             }
             
+        }
+
+        private string CreateToken(User user)
+        {  
+            // Giving a user claims
+            List<Claim> claims = new List<Claim>{
+                new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Username)
+            };
+            // Getting our secret key
+            SymmetricSecurityKey key = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value)
+            );
+            // Signing our creds
+            SigningCredentials creds = new SigningCredentials(key,SecurityAlgorithms.HmacSha512Signature);
+            //Writing our cliams and other information in tokenDescriptor
+            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor{
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+            // Creating object that will create our token (More info needed)
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            // Creating our token
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
+
         }
     }
 }
