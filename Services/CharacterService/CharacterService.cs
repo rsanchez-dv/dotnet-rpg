@@ -96,21 +96,28 @@ namespace dotnet_rpg.Services.CharacterService
             try
             {
                 // Find the existing character within "characters" array. Pull out into character
-                Character character = await _context.Characters.FirstOrDefaultAsync(x => x.Id == updatedCharacter.Id);
-                // Copy over all data into new character
-                character.Name = updatedCharacter.Name;
-                character.Class = updatedCharacter.Class;
-                character.Defense = updatedCharacter.Defense;
-                character.HitPoints = updatedCharacter.HitPoints;
-                character.Intelligence = updatedCharacter.Intelligence;
-                character.Strength = updatedCharacter.Strength;
-                // Update the database
-                _context.Characters.Update(character);
-                // Save changes
-                await _context.SaveChangesAsync();
+                // Includes grabs the user data associated with the grabbed data
+                Character character = await _context.Characters.Include(x=>x.User).FirstOrDefaultAsync(x => x.Id == updatedCharacter.Id);
+                if(character.User.Id == GetUserId()){
+                    // Copy over all data into new character
+                    character.Name = updatedCharacter.Name;
+                    character.Class = updatedCharacter.Class;
+                    character.Defense = updatedCharacter.Defense;
+                    character.HitPoints = updatedCharacter.HitPoints;
+                    character.Intelligence = updatedCharacter.Intelligence;
+                    character.Strength = updatedCharacter.Strength;
+                    // Update the database
+                    _context.Characters.Update(character);
+                    // Save changes
+                    await _context.SaveChangesAsync();
 
-                // Set the service Response with new character
-                serviceResponse.Data = _mapper.Map<GetCharacterDto>(character);
+                    // Set the service Response with new character
+                    serviceResponse.Data = _mapper.Map<GetCharacterDto>(character);
+                }else{
+                    serviceResponse.Success = false;
+                    serviceResponse.Message = "Character not found.";
+                }
+                
 
             }
             catch (Exception ex)
