@@ -352,3 +352,17 @@ MigrationBackup/
 .bin/
 .obj/
 .testing/
+obj/dotnet-rpg.csproj.nuget.dgspec.json
+obj/dotnet-rpg.csproj.nuget.g.props
+obj/project.assets.json
+obj/Debug/netcoreapp3.1/dotnet-rpg.assets.cache
+obj/Debug/netcoreapp3.1/dotnet-rpg.csproj.FileListAbsolute.txt
+obj/Debug/netcoreapp3.1/dotnet-rpg.csprojAssemblyReference.cache
+obj/Debug/netcoreapp3.1/dotnet-rpg.dll
+obj/Debug/netcoreapp3.1/dotnet-rpg.pdb
+obj/Debug/netcoreapp3.1/project.razor.json
+bin/Debug/netcoreapp3.1/appsettings.json
+bin/Debug/netcoreapp3.1/dotnet-rpg.deps.json
+bin/Debug/netcoreapp3.1/dotnet-rpg.dll
+bin/Debug/netcoreapp3.1/dotnet-rpg.pdb
+bin/Debug/netcoreapp3.1/dotnet-rpg.runtimeconfig.dev.json
